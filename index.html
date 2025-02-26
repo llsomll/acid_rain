@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- copyright: Dasom Kim 000926499 March 2024 -->
+<!-- This is html document for Assignment4 to practice using SVG and JavaScript  -->
+<!-- The game 'Acid Rain' is inspired by a Korean word typing game of the same name. Players face raindrops, each presenting a multiplication problem. As the raindrops descend, players must quickly calculate the correct answers and type them into the input field. Correct answers earn points and increase the speed of the falling raindrops, while incorrect answers decrease the player's remaining chances.  -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Basic Bootstrap Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css file-->
+    <link rel="stylesheet" type="text/css" href="css/a4styles.css">
+    <!-- Javascript file-->
+    <script src="js/a4script.js" defer></script>
+    <title>Assignment 4</title>
+    <link rel="shortcut icon" href="images/favicon-32x32.png">
+</head>
+
+<body class="whole-page">
+    <div class="container-fluid p-0">
+
+        <!-- Page header -->
+        <header class="d-flex align-items-center p-2">
+            <!-- Game Logo -->
+            <div class="col-md-6">
+                <img id="logo" src="images/acid_rain_logo.png" alt="logo image">
+            </div>
+            <!-- Start Button -->
+            <div class="text-center col-md-6 d-flex justify-content-end">
+                <button id="startButton" type="button" class="btn btn-outline-warning btn-lg">Start!</button>
+            </div>
+        </header>
+
+
+
+        <!-- Main content area -->
+        <main class="d-flex flex-column align-items-center">
+
+            <div id="gameInfo" class="m-0">
+                <span id="heartsDisplay">Hearts: &#128155;&#128155;&#128155;&#128155;&#128155;</span>
+                <span id="scoreDisplay">Score: 0</span>
+            </div>
+
+            <!-- SVG (Game Graphic Canvas) -->
+            <div id="skyPicture" class="m-1">
+                <svg id="skyDrawing" width="600" height="600" viewBox="0,0,400,400" preserveAspectRatio="none">
+
+                    <defs>
+                        <!-- Gradient for the sky -->
+                        <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0e0014;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#361271;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#a849c8;stop-opacity:1" />
+                        </linearGradient>
+                        <!-- Gradient for the moon -->
+                        <linearGradient id="moonGradient" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fff9c3;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ffed4b;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ffc20b;stop-opacity:1" />
+                        </linearGradient>
+                        <!-- Gradient for the mountain -->
+                        <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="50%" y2="100%">
+                            <stop offset="0%" style="stop-color:#959177;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#3a371f;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="400" height="400" fill="url(#skyGradient)" />
+
+                    <!-- Stars -->
+                    <circle cx="200" cy="30" r="1" fill="#FFF" />
+                    <circle cx="100" cy="150" r="1" fill="#FFF" />
+                    <circle cx="150" cy="250" r="1" fill="#FFF" />
+                    <circle cx="200" cy="100" r="1" fill="#FFF" />
+                    <circle cx="300" cy="100" r="1" fill="#FFF" />
+                    <circle cx="300" cy="200" r="1" fill="#FFF" />
+                    <circle cx="350" cy="50" r="1" fill="#FFF" />
+                    <circle cx="50" cy="300" r="1" fill="#FFF" />
+                    <circle cx="150" cy="370" r="1" fill="#FFF" />
+                    <circle cx="250" cy="250" r="1" fill="#FFF" />
+                    <circle cx="350" cy="350" r="1" fill="#FFF" />
+                    <circle cx="50" cy="50" r="1" fill="#FFF" />
+                    <circle cx="30" cy="120" r="1" fill="#FFF" />
+
+                    <!-- Moon -->
+                    <circle cx="200" cy="100" r="28" fill="url(#moonGradient)" />
+
+                    <!-- Mountain -->
+                    <polygon points="30,400 100,350 150,380 250,310 350,365 400,290 400,400 "
+                        fill="url(#mountainGradient)" />
+
+                    <!-- Instruction -->
+                    <text x="100" y="150" fill="White" font-size="11" text-anchor="middle" opacity="0.8">
+                        <tspan x="200" dy="1em">Try to change the background image by clicking it before the game
+                            starts.</tspan>
+                        <tspan x="200" dy="1em">Once the game starts, you won't be able to change it.</tspan>
+                        <tspan x="200" dy="4em">*****How to play*****</tspan>
+                        <tspan x="200" dy="2em">1. Click "Start!" to begin.</tspan>
+                        <tspan x="200" dy="1em">2. Answer multiplication questions as raindrops fall.</tspan>
+                        <tspan x="200" dy="1em">3. Type your answer in the box and press "Enter".</tspan>
+                        <tspan x="200" dy="1em">4. Earn points for correct answers.</tspan>
+                        <tspan x="200" dy="1em">5. Each correct answer increases the falling speed of the raindrops.
+                        </tspan>
+                        <tspan x="200" dy="1em">6. If a raindrop reaches the bottom before you solve the problem,
+                        </tspan>
+                        <tspan x="200" dy="1em">you will lose a heart.</tspan>
+                        <tspan x="200" dy="1em">7. The game ends when you run out of hearts.</tspan>
+                        <tspan x="200" dy="5em">* Please use the Firefox browser for the best experience with the game.
+                        </tspan>
+                    </text>
+                </svg>
+
+            </div>
+
+            <!-- Answer Input Field -->
+            <div class="form-group text-center">
+                <div class="col-md-12 align-items-center">
+                    <input type="text" name="answerInput" value="Enter your answer"
+                        class="form-control bg-light text-dark text-center m-1" id="answerInput">
+                </div>
+            </div>
+
+            <!-- Background Music-->
+            <audio id="backgroundMusic" src="music/gamestart.mp3" loop></audio>
+
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="p-3 text-center text-black">
+            © 2024, Dasom Kim 000926499, Mohawk College
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

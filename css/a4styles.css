@@ -1,0 +1,40 @@
+/* copyright: Dasom Kim 000926499 March 2024 */
+/* CSS file for Assignment 4 (Acid Rain Game) */
+
+
+h1 {
+    font-size: 20px;
+    margin-bottom: -1.5px;
+}
+
+
+#skyDrawing {
+    border: 1.5px solid black;
+    border-radius: 20px;
+    width: auto;
+    height: 100%;
+}
+
+#startButton {
+    margin-left: 10px;
+    font-size: 30px;
+}
+
+#gameInfo {
+    font-size: 25px;
+    margin-bottom: 2px;
+}
+
+#heartsDisplay {
+    margin-right: 30px;
+}
+
+
+#logo {
+    width: 250px;
+    height: auto;
+}
+
+p {
+    background-color: lightgoldenrodyellow;
+}
