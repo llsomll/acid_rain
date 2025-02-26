@@ -48,6 +48,6 @@ Background music is included in the game to enhance the gaming experience. You c
 
 ## Play Game
 
-[Click to Play ACID RAIN!](acid-rain.netlify.app)
+[Click to Play ACID RAIN!](https://acid-rain.netlify.app/)
 
 
