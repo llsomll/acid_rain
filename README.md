@@ -1,4 +1,4 @@
-# ☔Acid Rain Game - Assignment 4
+# ☔Acid Rain Game
 
 ## Overview
 
